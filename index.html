@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+
+            game();
+
+            function playerSelection() {
+
+                let check=false;
+                
+                while (!Boolean(check)){
+                let playerPick = prompt("Please pick Rock, Paper or Scissors!");
+                
+                if (playerPick.toLowerCase() == 'rock' || playerPick.toLowerCase()=='paper' || playerPick.toLowerCase()=='scissor') {
+                check=true;
+                return playerPick;
+                }
+                else {
+                    alert("You didn't pick a good option!");
+                }
+            }
+
+            }
+
+            function computerPlay() {
+                switch ( Math.floor((Math.random()*3)+1)) {
+                    case 1:
+                        return "Rock";
+                        break;
+                    case 2:
+                        return "Paper";
+                        break;
+                    case 3:
+                        return "Scissors";
+                        break;
+                }
+            }
+            
+            function playRound (playerSelection, computerPlay) {
+                let playerPick=playerSelection.charAt(0).toUpperCase() + playerSelection.toLowerCase().substr(1, (playerSelection.length-1));
+                if (playerPick=="Rock") {
+                    if (computerPlay=="Paper") {
+                        alert("You Lose! Paper covers Rock!");
+                    }
+                    else if (computerPlay=="Scissors") {
+                        alert("You Win! Rock smashes Scissors!");
+                    }
+                    else {
+                        alert("Tie! We both picked Rock!")
+                    }
+                }
+                else if (playerPick=="Scissors") {
+                    if (computerPlay=="Paper") {
+                        alert("You Win! Scissors cut Paper!");
+                    }
+                    else if (computerPlay=="Scissors") {
+                        alert("Tie! We both picked Scissors!");
+                    }
+                    else {
+                        alert("You Lose!  Rock smashes Scissors!")
+                    }
+                }
+                else {
+                    if (computerPlay=="Paper") {
+                        alert("Tie! We both picked Paper!");
+                    }
+                    else if (computerPlay=="Scissors") {
+                        alert("You Lose! Scissors cut Paper!");
+                    }
+                    else {
+                        alert("You Win! Paper covers Rock!")
+                    }        
+                }
+
+            }
+
+            function game(){
+                
+                while (goRound().toLowerCase().charAt(0)=="y"){
+                playRound(playerSelection(), computerPlay());
+                }
+                
+                function goRound(){
+                    let check=false;
+
+                    while(!Boolean(check)){
+                    
+                        let response=prompt("Play a round? Yes/No");
+                    
+                        if (response.toLowerCase().charAt(0)=='y' || response.toLowerCase().charAt(0)=='n'){
+                    
+                            check=true;
+                            return response;
+                    }
+                    else {
+                        alert("You didn't pick a good option!");
+                    }
+                    }
+                }
+            }
+
+        </script>
+    </body>
+</html>
